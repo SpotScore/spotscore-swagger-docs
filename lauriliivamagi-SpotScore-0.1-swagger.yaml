@@ -1,9 +1,8 @@
 ---
 swagger: "2.0"
 info:
-  version: "1.0"
+  version: "0.1"
   title: "SpotScore API"
-  description: "OSM data based location info API"
 paths:
   /objects:
     get:
@@ -12,14 +11,30 @@ paths:
         \ Location can be automatic input or user input as address.\nOptional query\
         \ param of **bbox** determines the objects maximum distance from the current\
         \ **location**.\n\nLimitations: \n* Returned objects array can't be too big.\n\
-        * Bbox and radius can't be too big.\n\n  \n"
+        * Bbox and radius can't be too big.\n  \n"
       parameters:
       - name: "location"
-        in: "body"
+        in: "query"
         description: "location of interest"
         required: true
-        schema:
-          $ref: "#/definitions/location"
+        type: "string"
+      - name: "address"
+        in: "query"
+        description: "address for location of interest"
+        required: false
+        type: "string"
+      - name: "bbox"
+        in: "query"
+        description: "bindingbox for points of interest"
+        required: false
+        type: "number"
+        format: "double"
+      - name: "radius"
+        in: "query"
+        description: "radius for points of interest"
+        required: false
+        type: "number"
+        format: "double"
       responses:
         200:
           description: "Successful response"
@@ -69,15 +84,16 @@ paths:
             title: "ErrorResponse"
             type: "string"
             example: "Bad inputs"
-  /information:
+  /object/id:
     get:
       description: "Gets objects `information`.\n"
       parameters:
-      - name: "object"
+      - name: "id"
         in: "query"
-        description: "needed object"
+        description: "objects id"
         required: true
-        type: "string"
+        type: "number"
+        format: "integer"
       responses:
         200:
           description: "Successful response"
@@ -100,11 +116,32 @@ paths:
         \ too big.\n* Bbox and radius can't be too big.\n\n  \n"
       parameters:
       - name: "location"
-        in: "body"
+        in: "query"
         description: "location of interest"
         required: true
-        schema:
-          $ref: "#/definitions/nearest_location"
+        type: "string"
+      - name: "address"
+        in: "query"
+        description: "address for location of interest"
+        required: false
+        type: "string"
+      - name: "bbox"
+        in: "query"
+        description: "bindingbox for points of interest"
+        required: false
+        type: "number"
+        format: "double"
+      - name: "radius"
+        in: "query"
+        description: "radius for points of interest"
+        required: false
+        type: "number"
+        format: "double"
+      - name: "nearest"
+        in: "query"
+        description: "boolean to get only nearest object"
+        required: true
+        type: "boolean"
       responses:
         200:
           description: "Successful response"
@@ -125,37 +162,3 @@ paths:
             title: "ErrorResponse"
             type: "string"
             example: "Bad inputs"
-definitions:
-  location:
-    description: "get object params"
-    properties:
-      address:
-        type: "string"
-        description: "locations addrss"
-      categories:
-        type: "string"
-        description: "object categories"
-      bbox:
-        type: "number"
-        description: "bbox coordinates"
-      radius:
-        type: "number"
-        description: "radius"
-  nearest_location:
-    description: "get nearest object params"
-    properties:
-      address:
-        type: "string"
-        description: "locations addrss"
-      categories:
-        type: "string"
-        description: "object categories"
-      bbox:
-        type: "number"
-        description: "bbox coordinates"
-      radius:
-        type: "number"
-        description: "radius"
-      nearest:
-        type: "boolean"
-        description: "nearest only"
