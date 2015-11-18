@@ -1,3 +1,3 @@
 # spotscore-swagger-docs
 SpotScore API documentation with swaggerhub.com
-Find the documentation here: https://swaggerhub.com/api/lauriliivamagi/SpotScore/0.1
+Find the documentation here: https://swaggerhub.com/api/lauriliivamagi/SpotScore
