@@ -5,6 +5,11 @@
     "title" : "SpotScore API",
     "description" : ""
   },
+  "host" : "spotscore.net",
+  "produces" : [ "application/json" ],
+  "security" : [ {
+    "api_key" : [ ]
+  } ],
   "paths" : {
     "/" : {
       "get" : {
@@ -226,6 +231,13 @@
           "type" : "string"
         }
       }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
     }
   }
 }
