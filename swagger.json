@@ -25,6 +25,12 @@
           },
           "404" : {
             "description" : "Not Found"
+          },
+          "500" : {
+            "description" : "Error",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
           }
         }
       }
@@ -92,7 +98,7 @@
             }
           },
           "500" : {
-            "description" : "Failed response",
+            "description" : "Error",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -120,7 +126,7 @@
             }
           },
           "500" : {
-            "description" : "Failed response",
+            "description" : "Error",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -149,7 +155,7 @@
             }
           },
           "500" : {
-            "description" : "Failed response",
+            "description" : "Error",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -225,7 +231,7 @@
       "properties" : {
         "code" : {
           "type" : "number",
-          "format" : "long"
+          "format" : "integer"
         },
         "message" : {
           "type" : "string"
