@@ -190,9 +190,24 @@
             "type" : "number",
             "format" : "long"
           },
+          "categories" : {
+            "description" : "Object's categories/tags",
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "key" : {
+                  "type" : "string"
+                },
+                "value" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
           "geometry" : {
             "type" : "string",
-            "description" : "Well-Known Binary representation of the object's geometry in WGS84 Web Mercator (EPSG:3857)"
+            "description" : "Well-Known Text representation of the object's geometry in WGS84 Web Mercator (EPSG:3857)"
           }
         }
       }
