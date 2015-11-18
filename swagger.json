@@ -100,8 +100,7 @@
           "200" : {
             "description" : "Successful response",
             "schema" : {
-              "title" : "ObjectInformation",
-              "type" : "string"
+              "$ref" : "#/definitions/ObjectInfo"
             }
           },
           "500" : {
@@ -223,6 +222,17 @@
           "value" : {
             "type" : "string"
           }
+        }
+      }
+    },
+    "ObjectInfo" : {
+      "type" : "object",
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
         }
       }
     },
