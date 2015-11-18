@@ -6,6 +6,24 @@
     "description" : ""
   },
   "paths" : {
+    "/" : {
+      "get" : {
+        "operationId" : "getRoot",
+        "summary" : "Returns this document in JSON",
+        "description" : "",
+        "responses" : {
+          "200" : {
+            "description" : "Returns API description in Swagger JSON",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
     "/objects" : {
       "get" : {
         "operationId" : "getObjects",
