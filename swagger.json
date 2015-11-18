@@ -14,14 +14,14 @@
         "parameters" : [ {
           "name" : "lon",
           "in" : "query",
-          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's longitude.",
+          "description" : "WGS84 (EPSG:4326) coordinate system's longitude for Point of Location.",
           "required" : true,
           "type" : "number",
           "format" : "double"
         }, {
           "name" : "lat",
           "in" : "query",
-          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's latitude.",
+          "description" : "WGS84 (EPSG:4326) coordinate system's latitude for Point of Location.",
           "required" : true,
           "type" : "number",
           "format" : "double"
