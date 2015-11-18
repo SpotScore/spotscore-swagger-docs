@@ -2,7 +2,8 @@
   "swagger" : "2.0",
   "info" : {
     "version" : "1.0",
-    "title" : "SpotScore API"
+    "title" : "SpotScore API",
+    "description" : ""
   },
   "paths" : {
     "/objects" : {
@@ -61,7 +62,7 @@
     },
     "/categories" : {
       "get" : {
-        "description" : "Gets `categories` array.\n",
+        "description" : "",
         "parameters" : [ {
           "name" : "category",
           "in" : "query",
@@ -87,7 +88,7 @@
     },
     "/object/{id}" : {
       "get" : {
-        "description" : "Gets objects `information`.\n",
+        "description" : "",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -114,7 +115,7 @@
     },
     "/nearest" : {
       "get" : {
-        "description" : "Gets nearest `object` objects.\nMust have param **location** to return any objects and can have optional **categories** for more specific objects. Location can be automatic input or user input as address.\nOptional query param of **bbox** determines the objects maximum distance from the current **location**.\n\nLimitations: \n* Returned objects array can't be too big.\n* Bbox and radius can't be too big.\n\n  \n",
+        "description" : "",
         "parameters" : [ {
           "name" : "location",
           "in" : "query",
@@ -180,6 +181,7 @@
   },
   "definitions" : {
     "ArrayOfObjects" : {
+      "description" : "",
       "type" : "array",
       "items" : {
         "type" : "object",
@@ -212,6 +214,7 @@
       }
     },
     "ArrayOfCategories" : {
+      "description" : "",
       "type" : "array",
       "items" : {
         "type" : "object",
@@ -226,6 +229,7 @@
       }
     },
     "ObjectInfo" : {
+      "description" : "",
       "type" : "object",
       "properties" : {
         "key" : {
@@ -237,6 +241,7 @@
       }
     },
     "ErrorResponse" : {
+      "description" : "",
       "type" : "object",
       "properties" : {
         "code" : {
