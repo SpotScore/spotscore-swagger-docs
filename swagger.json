@@ -36,7 +36,7 @@
         }, {
           "name" : "bbox",
           "in" : "query",
-          "description" : "Bounding box for querying objects for map rendering purposes. Format `bbox=min_Longitude,min_Latitude,max_Longitude,max_Latitude`, where coordinates are in WGS84 (EPSG:4326) coordinate system.",
+          "description" : "Bounding box for querying objects for map rendering purposes. Format `bbox=min_Longitude,min_Latitude,max_Longitude,max_Latitude`, where coordinates are in WGS84 (EPSG:4326) coordinate system",
           "required" : false,
           "type" : "string"
         }, {
