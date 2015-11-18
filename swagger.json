@@ -28,7 +28,7 @@
         }, {
           "name" : "radius",
           "in" : "query",
-          "description" : "Radius around the point of location in meters. Default value is `100` meters.",
+          "description" : "Radius around the point of location in meters. Default value is `100`.",
           "required" : false,
           "type" : "number",
           "format" : "integer",
