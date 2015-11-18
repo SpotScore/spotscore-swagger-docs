@@ -7,7 +7,7 @@
   "paths" : {
     "/objects" : {
       "get" : {
-        "description" : "Gets `object` objects.\nMust have param **location** to return any objects and can have optional **categories** for more specific objects. Location can be automatic input or user input as address.\nOptional query param of **bbox** determines the objects maximum distance from the current **location**.\n\nLimitations: \n* Returned objects array can't be too big.\n* Bbox and radius can't be too big.\n  \n",
+        "description" : "",
         "parameters" : [ {
           "name" : "lon",
           "in" : "query",
