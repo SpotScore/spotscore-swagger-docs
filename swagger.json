@@ -8,6 +8,8 @@
   "paths" : {
     "/objects" : {
       "get" : {
+        "operationId" : "getObjects",
+        "summary" : "",
         "description" : "",
         "parameters" : [ {
           "name" : "lon",
@@ -43,6 +45,21 @@
           "description" : "List of categories of objects to be queried",
           "type" : "string",
           "required" : false
+        }, {
+          "name" : "nearest",
+          "in" : "query",
+          "description" : "Flag `true` to return only the nearest objects. Default is `false`",
+          "type" : "boolean",
+          "default" : false,
+          "required" : false
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Maximum number of results to return. If exceeded, error is returned. Default is `100` objects.",
+          "type" : "number",
+          "format" : "integer",
+          "default" : 100,
+          "required" : false
         } ],
         "responses" : {
           "200" : {
@@ -62,6 +79,8 @@
     },
     "/categories" : {
       "get" : {
+        "operationId" : "getCategories",
+        "summary" : "",
         "description" : "",
         "parameters" : [ {
           "name" : "category",
@@ -88,6 +107,8 @@
     },
     "/object/{id}" : {
       "get" : {
+        "operationId" : "getObjectById",
+        "summary" : "",
         "description" : "",
         "parameters" : [ {
           "name" : "id",
@@ -102,71 +123,6 @@
             "description" : "Successful response",
             "schema" : {
               "$ref" : "#/definitions/ObjectInfo"
-            }
-          },
-          "500" : {
-            "description" : "Failed response",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
-            }
-          }
-        }
-      }
-    },
-    "/nearest" : {
-      "get" : {
-        "description" : "",
-        "parameters" : [ {
-          "name" : "location",
-          "in" : "query",
-          "description" : "location of interest",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "address",
-          "in" : "query",
-          "description" : "address for location of interest",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "bbox",
-          "in" : "query",
-          "description" : "bindingbox for points of interest",
-          "required" : false,
-          "type" : "number",
-          "format" : "double"
-        }, {
-          "name" : "radius",
-          "in" : "query",
-          "description" : "radius for points of interest",
-          "required" : false,
-          "type" : "number",
-          "format" : "double"
-        }, {
-          "name" : "nearest",
-          "in" : "query",
-          "description" : "boolean to get only nearest object",
-          "required" : true,
-          "type" : "boolean"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Successful response",
-            "schema" : {
-              "title" : "ArrayOfObjects",
-              "type" : "array",
-              "items" : {
-                "title" : "Object",
-                "type" : "object",
-                "properties" : {
-                  "name" : {
-                    "type" : "string"
-                  },
-                  "single" : {
-                    "type" : "boolean"
-                  }
-                }
-              }
             }
           },
           "500" : {
