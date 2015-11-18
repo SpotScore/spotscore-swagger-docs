@@ -15,30 +15,30 @@
           "name" : "lon",
           "in" : "query",
           "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's longitude",
-          "required" : false,
+          "required" : true,
           "type" : "number",
           "format" : "double"
         }, {
           "name" : "lat",
           "in" : "query",
           "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's latitude",
-          "required" : false,
+          "required" : true,
           "type" : "number",
           "format" : "double"
         }, {
           "name" : "radius",
           "in" : "query",
-          "description" : "Radius around the point of location in meters",
+          "description" : "Radius around the point of location in meters. Default value is `100` meters",
           "required" : false,
           "type" : "number",
-          "format" : "double"
+          "format" : "integer",
+          "default" : 100
         }, {
           "name" : "bbox",
           "in" : "query",
-          "description" : "Bounding box for querying objects for map rendering",
+          "description" : "Bounding box for querying objects for map rendering purposes. Format `bbox=min_Longitude,min_Latitude,max_Longitude,max_Latitude`, where coordinates are in WGS84 (EPSG:4326) coordinate system.",
           "required" : false,
-          "type" : "number",
-          "format" : "double"
+          "type" : "string"
         }, {
           "name" : "categories",
           "in" : "query",
