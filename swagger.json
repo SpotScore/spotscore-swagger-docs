@@ -1,0 +1,226 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "SpotScore API"
+  },
+  "paths" : {
+    "/objects" : {
+      "get" : {
+        "description" : "Gets `object` objects.\nMust have param **location** to return any objects and can have optional **categories** for more specific objects. Location can be automatic input or user input as address.\nOptional query param of **bbox** determines the objects maximum distance from the current **location**.\n\nLimitations: \n* Returned objects array can't be too big.\n* Bbox and radius can't be too big.\n  \n",
+        "parameters" : [ {
+          "name" : "lon",
+          "in" : "query",
+          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's longitude",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "lat",
+          "in" : "query",
+          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's latitude",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "radius",
+          "in" : "query",
+          "description" : "Radius around the point of location in meters",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "bbox",
+          "in" : "query",
+          "description" : "Bounding box for querying objects for map rendering",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "categories",
+          "in" : "query",
+          "description" : "List of categories of objects to be queried",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfObjects"
+            }
+          },
+          "500" : {
+            "description" : "Failed response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/categories" : {
+      "get" : {
+        "description" : "Gets `categories` array.\n",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "query",
+          "description" : "needed categories",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfCategories"
+            }
+          },
+          "500" : {
+            "description" : "Failed response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/object/{id}" : {
+      "get" : {
+        "description" : "Gets objects `information`.\n",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Object's OSM ID (universally unique)",
+          "required" : true,
+          "type" : "number",
+          "format" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "title" : "ObjectInformation",
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Failed response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/nearest" : {
+      "get" : {
+        "description" : "Gets nearest `object` objects.\nMust have param **location** to return any objects and can have optional **categories** for more specific objects. Location can be automatic input or user input as address.\nOptional query param of **bbox** determines the objects maximum distance from the current **location**.\n\nLimitations: \n* Returned objects array can't be too big.\n* Bbox and radius can't be too big.\n\n  \n",
+        "parameters" : [ {
+          "name" : "location",
+          "in" : "query",
+          "description" : "location of interest",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "address",
+          "in" : "query",
+          "description" : "address for location of interest",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "bbox",
+          "in" : "query",
+          "description" : "bindingbox for points of interest",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "radius",
+          "in" : "query",
+          "description" : "radius for points of interest",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "nearest",
+          "in" : "query",
+          "description" : "boolean to get only nearest object",
+          "required" : true,
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "title" : "ArrayOfObjects",
+              "type" : "array",
+              "items" : {
+                "title" : "Object",
+                "type" : "object",
+                "properties" : {
+                  "name" : {
+                    "type" : "string"
+                  },
+                  "single" : {
+                    "type" : "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Failed response",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ArrayOfObjects" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "description" : "Object's OSM ID",
+            "type" : "number",
+            "format" : "long"
+          },
+          "geometry" : {
+            "description" : "Well-Known Binary representation of the object's geometry in WGS84 Web Mercator (EPSG:3857)"
+          }
+        }
+      }
+    },
+    "ArrayOfCategories" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "ErrorResponse" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "number",
+          "format" : "long"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
