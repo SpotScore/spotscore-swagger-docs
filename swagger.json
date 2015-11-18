@@ -14,21 +14,21 @@
         "parameters" : [ {
           "name" : "lon",
           "in" : "query",
-          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's longitude",
+          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's longitude.",
           "required" : true,
           "type" : "number",
           "format" : "double"
         }, {
           "name" : "lat",
           "in" : "query",
-          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's latitude",
+          "description" : "Point of location. WGS84 (EPSG:4326) coordinate system's latitude.",
           "required" : true,
           "type" : "number",
           "format" : "double"
         }, {
           "name" : "radius",
           "in" : "query",
-          "description" : "Radius around the point of location in meters. Default value is `100` meters",
+          "description" : "Radius around the point of location in meters. Default value is `100` meters.",
           "required" : false,
           "type" : "number",
           "format" : "integer",
@@ -36,19 +36,19 @@
         }, {
           "name" : "bbox",
           "in" : "query",
-          "description" : "Bounding box for querying objects for map rendering purposes. Format `bbox=min_Longitude,min_Latitude,max_Longitude,max_Latitude`, where coordinates are in WGS84 (EPSG:4326) coordinate system",
+          "description" : "Bounding box for querying objects for map rendering purposes. Format `bbox=min_Longitude,min_Latitude,max_Longitude,max_Latitude`, where coordinates are in WGS84 (EPSG:4326) coordinate system.",
           "required" : false,
           "type" : "string"
         }, {
           "name" : "categories",
           "in" : "query",
-          "description" : "List of categories of objects to be queried",
+          "description" : "List of categories of objects to be queried.",
           "type" : "string",
           "required" : false
         }, {
           "name" : "nearest",
           "in" : "query",
-          "description" : "Flag `true` to return only the nearest objects. Default is `false`",
+          "description" : "Flag `true` to return only the nearest objects. Default is `false`.",
           "type" : "boolean",
           "default" : false,
           "required" : false
@@ -85,7 +85,7 @@
         "parameters" : [ {
           "name" : "category",
           "in" : "query",
-          "description" : "needed categories",
+          "description" : "List of search terms",
           "required" : true,
           "type" : "string"
         } ],
@@ -143,7 +143,7 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "description" : "Object's OSM ID",
+            "description" : "Object's OSM ID.",
             "type" : "number",
             "format" : "long"
           },
@@ -164,7 +164,7 @@
           },
           "geometry" : {
             "type" : "string",
-            "description" : "Well-Known Text representation of the object's geometry in WGS84 Web Mercator (EPSG:3857)"
+            "description" : "Well-Known Text representation of the object's geometry in WGS84 Web Mercator (EPSG:3857)."
           }
         }
       }
