@@ -71,7 +71,7 @@
         }, {
           "name" : "categories",
           "in" : "query",
-          "description" : "List of categories of objects to be queried.",
+          "description" : "Categories of objects to be queried. Format `key,value`. Can be present multiple times (to simulate a hash). Like `categories=building,yes&categories=amenity,parking`.",
           "type" : "string",
           "required" : false
         }, {
